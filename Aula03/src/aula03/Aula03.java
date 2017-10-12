@@ -6,6 +6,7 @@
 package aula03;
 
 import Produtos.Caneta;
+import Produtos.Produto;
 
 /**
  *
@@ -21,18 +22,17 @@ public class Aula03 {
 
         Caneta caneta01 = new Caneta("Azul", "Bic", 2, "crystal", 1, "pequena", 001);
 
+        
+
+        Produto caneta02 = new Caneta("Azul", "Bic", 2, "crystal", 1, "pequena", 001);
+               
         caneta01.escrever("Teste");
         caneta01.imprimir();
         caneta01.desenhar();
         caneta01.recarregar();
-
-        Caneta caneta02 = new Caneta("Azul", "Bic", 2, "crystal", 1, "pequena", 001);
-        caneta01.escrever("Teste");
-        caneta01.imprimir();
-        caneta01.desenhar();
-        caneta01.recarregar();
-
-        System.out.println(caneta01.verificarCarga());
+        
+        caneta02.setCodigo(002);
+        System.out.println(caneta02.getCodigo());
 
     }
 
