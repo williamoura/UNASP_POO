@@ -9,30 +9,29 @@ package Produtos;
  *
  * @author william.moura.a
  */
-public class Caneta {
+public class Caneta extends Produto implements Escrita {
 
     public String Cor;
-    private String Marca;
     private double Ponta;
-    private String Modelo;
-    private float Valor;
     private String Tamanho;
     private int Carga;
     private boolean EstaAberta;
     private String Texto;
 
-    public Caneta(String Cor, String Marca, double Ponta, String Modelo, float Valor, String Tamanho) {
+    public Caneta(String Cor, String Marca, double Ponta,
+            String Modelo, float Valor, String Tamanho, int Codigo) {
         this.EstaAberta = false;
         this.Carga = 100;
-
         this.Cor = Cor;
         this.Marca = Marca;
         this.Ponta = Ponta;
         this.Modelo = Modelo;
         this.Valor = Valor;
         this.Tamanho = Tamanho;
+        this.setCodigo(Codigo);
     }
 
+    @Override
     public void escrever(String palavra) {
         if (this.verificarCarga() >= 5) {
             if (this.Texto == null || this.Texto == "") {
@@ -78,11 +77,23 @@ public class Caneta {
         this.Carga = 100;
     }
 
+    @Override
     public void apagar() {
-        this.Texto = "";    
+        this.Texto = "";
     }
 
+    @Override
     public void imprimir() {
         System.out.println(this.Texto);
+    }
+
+    @Override
+    public void alterarValor(float valor) {
+        this.Valor = valor;
+    }
+
+    @Override
+    public String ler() {
+        return this.Texto;
     }
 }

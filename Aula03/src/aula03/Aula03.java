@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package aula03;
+
 import Produtos.Caneta;
+
 /**
  *
  * @author william.moura.a
@@ -16,16 +18,22 @@ public class Aula03 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        Caneta caneta01 = new Caneta("Azul", "Bic", 2, "crystal", 1, "pequena");
-        
-        caneta01.escrever("Teste"); 
+
+        Caneta caneta01 = new Caneta("Azul", "Bic", 2, "crystal", 1, "pequena", 001);
+
+        caneta01.escrever("Teste");
         caneta01.imprimir();
         caneta01.desenhar();
-        
+        caneta01.recarregar();
+
+        Caneta caneta02 = new Caneta("Azul", "Bic", 2, "crystal", 1, "pequena", 001);
+        caneta01.escrever("Teste");
+        caneta01.imprimir();
+        caneta01.desenhar();
+        caneta01.recarregar();
+
         System.out.println(caneta01.verificarCarga());
-        
-        
+
     }
-    
+
 }
