@@ -20,9 +20,12 @@ public class Aula05 {
     public static void main(String args[]) {
 
         List<Pet> pets = new ArrayList<>();
+        
+        //Inserindo Objetos de Classes diferentes no Array
         pets.add(new Gato(13));
         pets.add(new Cachorro());
 
+        //Using extension Method FOREACH
         pets.forEach((pet) -> {
             pet.makeSound();
 
@@ -33,6 +36,7 @@ public class Aula05 {
             }
         });
 
+        //Using FOR LIKE FOREACH
         for (Pet petItem : pets) {
             petItem.makeSound();
 
@@ -61,12 +65,12 @@ public class Aula05 {
         });
     }
 
-    public static Boolean implementsInterface(Object object, Class interf) {
-        for (Class c : object.getClass().getInterfaces()) {
-            if (c.equals(interf)) {
-                return true;
-            }
-        }
-        return false;
-    }
+//    public static Boolean implementsInterface(Object object, Class interf) {
+//        for (Class c : object.getClass().getInterfaces()) {
+//            if (c.equals(interf)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 }
