@@ -13,7 +13,7 @@ package Animais;
 public class Cachorro extends Pet implements Mamifero{
         
     @Override
-    public void makeSound() {
+    public void fazerBarulho() {
         System.out.println("Au-Au");
     }
     

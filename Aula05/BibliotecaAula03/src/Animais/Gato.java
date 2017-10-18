@@ -26,7 +26,7 @@ public class Gato extends Pet implements Mamifero, Felino {
     }
 
     @Override //Modo Automático por ser Abstrato
-    public void makeSound() {
+    public void fazerBarulho() {
         System.out.println("Miau");
     }
 

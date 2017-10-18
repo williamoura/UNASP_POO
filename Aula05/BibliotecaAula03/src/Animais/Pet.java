@@ -32,7 +32,7 @@ public abstract class Pet {
         this.idade = idade;
     }
 
-    public abstract void makeSound();
+    public abstract void fazerBarulho();
 
     public final void comer() {
         alimentado = true;

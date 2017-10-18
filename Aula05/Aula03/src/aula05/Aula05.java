@@ -27,7 +27,7 @@ public class Aula05 {
 
         //Using extension Method FOREACH
         pets.forEach((pet) -> {
-            pet.makeSound();
+            pet.fazerBarulho();
 
             if (pet.getClass().toString().contains("Gato")) //pet.setIdade(10);
             {
@@ -38,11 +38,10 @@ public class Aula05 {
 
         //Using FOR LIKE FOREACH
         for (Pet petItem : pets) {
-            petItem.makeSound();
+            petItem.fazerBarulho();
 
             if (petItem.getClass().toString().contains("Gato")) //pet.setIdade(10);
             {
-
             } else {
                 petItem.setIdade(12);
             }
