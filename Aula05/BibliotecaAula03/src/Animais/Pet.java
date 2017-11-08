@@ -17,7 +17,7 @@ public abstract class Pet {
 
     private Integer idade;
     public String tipoAnimal;
-    public boolean alimentado;   //EXEMPLO Static 
+    public static boolean alimentado;   //EXEMPLO Static 
     //protected boolean vacinado;
     
     public Integer getIdade() {
