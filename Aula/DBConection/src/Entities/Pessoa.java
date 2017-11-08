@@ -5,6 +5,8 @@
  */
 package Entities;
 
+import ConexaoBanco.CRUD;
+import ConexaoBanco.MySQL;
 import java.sql.ResultSet;
 import java.sql.SQLData;
 import java.sql.SQLException;
@@ -12,6 +14,9 @@ import java.sql.SQLInput;
 import java.sql.SQLOutput;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import ConexaoBanco.MySQL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -22,6 +27,10 @@ public class Pessoa implements SQLData {
     private int idPessoa;
     private String nome;
     private int idade;
+
+    public void setIdPessoa(int idPessoa) {
+        this.idPessoa = idPessoa;
+    }
     private String profissao;
     private String sql_type;
 
@@ -34,12 +43,12 @@ public class Pessoa implements SQLData {
 
     private void fillObject(ResultSet resultSqlItem) {
         try {
-            
+
             this.setNome(resultSqlItem.getString("nome"));
             this.setProfissao(resultSqlItem.getString("profissao"));
             this.setIdade(resultSqlItem.getInt("idade"));
             this.idPessoa = resultSqlItem.getInt("idPessoa");
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Pessoa.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -93,13 +102,49 @@ public class Pessoa implements SQLData {
         stream.writeInt(idade);
         stream.writeString(profissao);
     }
-    
-    public void printInformation()
-    {
+
+    public void printInformation() {
         System.out.println("-------------------------------");
         System.out.println(idPessoa);
         System.out.println(nome);
         System.out.println(idade);
         System.out.println(profissao);
+    }
+
+    public Pessoa InsertAux(java.sql.Connection connection) throws SQLException {
+        ArrayList<String> fields = new ArrayList<String>();
+        ArrayList<String> values = new ArrayList<String>();
+
+        fields.add("nome");
+        fields.add("idade");
+        fields.add("profissao");
+
+        values.add(nome);
+        values.add(String.valueOf(idade));
+        values.add(profissao);
+
+        new CRUD().Insert("Pessoa", fields, values, 3, connection);
+
+        return this;
+    }
+
+    public Pessoa UpdateAux(java.sql.Connection connection) throws SQLException {
+        ArrayList<String> values = new ArrayList<String>();
+
+        values.add("nome = '" + nome+"'");
+        values.add("idade = '" + String.valueOf(idade)+"'");
+        values.add("profissao = '" + profissao+"'");
+
+        new CRUD().Update("Pessoa", values, "idPessoa = " + idPessoa, 3, connection);
+
+        return this;
+    }
+
+    public void DeleteAux(java.sql.Connection connection, String where) throws SQLException {
+        new CRUD().Delete("Pessoa", where, connection);
+    }
+
+    public void DeleteById(java.sql.Connection connection, int id) throws SQLException {
+        new CRUD().Delete("Pessoa", " idPessoa = " + id, connection);
     }
 }

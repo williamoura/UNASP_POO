@@ -3,7 +3,9 @@ package ConexaoBanco;
 import java.sql.Connection;
 
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Properties;
 
 //Início da classe de conexão//
@@ -35,7 +37,6 @@ public class MySQL {
             String username = "root";        //nome de um usuário de seu BD 
             String password = "admin";      //sua senha de acesso
 
-            
             Properties properties = new Properties();
             properties.setProperty("user", username);
             properties.setProperty("password", password);
@@ -106,5 +107,4 @@ public class MySQL {
         return MySQL.getConexaoMySQL();
 
     }
-
-}
+  }

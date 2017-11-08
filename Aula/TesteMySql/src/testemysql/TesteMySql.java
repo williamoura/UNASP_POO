@@ -39,18 +39,30 @@ public class TesteMySql {
         ResultSet rs = preparedStmt.executeQuery("SELECT * from pessoa");// where idPessoa = 1");
         rs.next();
         Pessoa p1 = new Pessoa();
-        
+
         p1.setNome(rs.getString("nome"));
         p1.setProfissao(rs.getString("profissao"));
         p1.setIdade(rs.getInt("idade"));
+        p1.setIdPessoa(rs.getInt("idPessoa"));
 
-        rs.next();
-        Pessoa p2 = new Pessoa(rs);  
-    
+        Pessoa p2 = new Pessoa(rs);
+
+        p2.setIdade(2323);
+        
+        p2.UpdateAux(con);
+        
         System.out.println("Informações:");
         p1.printInformation();
         p2.printInformation();
-        
+
+        p1.setIdade(99);
+        p1.printInformation();
+
+        //p1.InsertAux(con);  
+        //p1.DeleteById(con, 1);
+        //p1.DeleteAux(con, " idade = '99'");
+        p1.printInformation();
+
         con.close();
     }
 }
